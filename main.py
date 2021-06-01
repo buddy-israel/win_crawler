@@ -132,8 +132,6 @@ class UserClass:
 		self.username = username
 		self.posts = []
 
-	# self.comments = []
-
 	def crawl_posts(self):
 		count = GlobalCountClass()
 
@@ -151,24 +149,6 @@ class UserClass:
 
 		print(f'Found: {count.Count} Post-Pages for User:{self.username}')
 		db.update_post_table(self.posts)
-
-	# def crawl_comments(self):
-	# 	count = 0
-	#
-	# 	while True:
-	# 		count += 1
-	# 		url = f'https://conspiracies.win/u/{self.username}/?type=comment&sort=new&page={count}'
-	#
-	# 		soup = util.request_url(url)
-	# 		if soup.find("div", "empty"):
-	# 			break
-	#
-	# 		for _comment in soup.find_all("div", "comment"):
-	# 			comment = UserCommentClass(self.username, _comment)
-	# 			self.comments.append(comment)
-	#
-	# 	print(f'Found: {count} Comment-Pages for User:{self.username}')
-	# 	db.update_comment_table(self.comments)
 
 	def crawl_comments(self):
 		count = 0
